@@ -10,7 +10,7 @@ from hubspot import HubSpot
 from pprint import pprint
 from hubspot.crm.contacts import SimplePublicObjectInput, ApiException
 
-def updatePhoneNumber(client):
+def updatePhoneNumber(client, find_key, default_number):
     
     contacts = client.crm.contacts.get_all()
     
@@ -59,8 +59,8 @@ if __name__ == '__main__':
     find_key = 'phone_number'
     default_number = '660049971'
 
-    client = HubSpot(access_token='pat-eu1-9492283a-09bc-4833-9dca-8c643d662007')
+    app_client = HubSpot(access_token='pat-eu1-9492283a-09bc-4833-9dca-8c643d662007')
 
-    contacts = updatePhoneNumber(client)
+    contacts = updatePhoneNumber(app_client, find_key, default_number)
     
-    createDealWithContact(client, contacts)
+    createDealWithContact(app_client, contacts)
